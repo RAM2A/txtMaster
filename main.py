@@ -28,18 +28,18 @@ bot = Client("bot",
              api_hash= "ef8b083047453358ef27bf889e8de82c")
 
 
-@bot.on_message(filters.command(["start"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /txt")
 
 
-@bot.on_message(filters.command("stop") & filters.user(ADMINS))
+@bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
     await m.reply_text("**STOPPED**🛑🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["TXT"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["TXT"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     input: Message = await bot.listen(editable.chat.id)
@@ -169,8 +169,8 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Kshitij.mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
-                cc1 = f'** {str(count).zfill(3)}.** {name1} Kshitij.pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
+                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Team RedX.mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
+                cc1 = f'** {str(count).zfill(3)}.** {name1} Team RedX.pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -197,7 +197,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n **bot made by YASH**")
+                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n **bot made by Red_X**")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
